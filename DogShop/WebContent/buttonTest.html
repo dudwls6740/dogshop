@@ -1,0 +1,39 @@
+<html>
+<head>
+<script>
+function changeValue(form){
+        var isAll = true;
+	for(i=0;i < form["ck"].length;i++){
+		if(form["ck"][i].checked == false){
+			isAll = false;
+                        break;
+		}
+	}	
+        if(isAll){
+		document.getElementById("btn").value = "전체삭제";
+                document.getElementById("btn").onClick = deleteAll();
+	}
+        else{
+		document.getElementById("btn").value = "선택삭제";
+                document.getElementById("btn").onClick = deletePart();
+	}	
+}
+
+function deleteAll(){
+	alert("전체삭제");
+}
+
+function deletePart(){
+	alert("선택삭제");
+}
+
+</script>
+</head>
+<body>
+<form name = "myForm">
+<input type = "checkbox" name = "ck" onClick = "changeValue(this.form)"/><br>
+<input type = "checkbox" name = "ck" onClick = "changeValue(this.form)"/><br>
+<input type = "button" value = "전체삭제" id = "btn"/>
+</form>
+</body>
+</html>
