@@ -62,7 +62,6 @@ public class CartBiz {
 				}
 			}
 		}
-		
 	}
 
 	public void upCartQty(HttpServletRequest request, String kind) {

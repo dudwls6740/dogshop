@@ -11,16 +11,16 @@ public class DogDao {
 		super();
 		this.con = con;
 	}
-	public List<Dog> getDogs() {
+	public ArrayList<Dog> getDogList() {
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
-		List<Dog> dogs = null;
+		ArrayList<Dog> dogList = null;
 
 		try{
 			String sql="select * from dog";
 			pstmt = con.prepareStatement(sql);
 			rs =pstmt.executeQuery();
-			dogs = new ArrayList<Dog>(); //ArrayList??? 객체를 담는다???
+			dogList = new ArrayList<Dog>(); //ArrayList??? 객체를 담는다???
 			Dog dog = null;
 			while(rs.next()){
 				dog = new Dog();
@@ -33,7 +33,7 @@ public class DogDao {
 				dog.setImage(rs.getString("image"));
 				dog.setCountry(rs.getString("country"));
 				dog.setReadcount(rs.getInt("readcount"));
-				dogs.add(dog);//dog에 저장
+				dogList.add(dog);//dog에 저장
 			}
 		}
 		catch(Exception e){
@@ -43,7 +43,7 @@ public class DogDao {
 			close(pstmt);
 			close(rs);
 		}
-		return dogs;
+		return dogList;
 	}
 	public Dog getDog(String id) { //조건값으로 선택한 특정 id 만 검색할거니깐. 알았냐
 		

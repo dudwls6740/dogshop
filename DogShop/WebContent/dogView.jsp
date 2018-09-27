@@ -1,21 +1,21 @@
 <%@page import="vo.Dog"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%
 	Dog dog = (Dog)request.getAttribute("dog");
 %>
-<h1 align="center"><%=dog.getKind() %>ÀÇ Á¤º¸</h1>
+<h1 align="center"><%=dog.getKind() %>ì˜ ì •ë³´</h1>
 <table align="center" width="600">
 	<tr bgcolor="orange">
-		<td align="right">Á¶È¸¼ö :<%=dog.getReadcount() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="dogCartAdd.dog?id=<%=dog.getId()%>">Àå¹Ù±¸´Ï ´ã±â</a>
+		<td align="right">ì¡°íšŒìˆ˜ :<%=dog.getReadcount() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="dogCartAdd.dog?id=<%=dog.getId()%>">ì¥ë°”êµ¬ë‹ˆ ë‹´ê¸°</a>
 	</tr>
 </table>
 
@@ -23,28 +23,28 @@
 	<tr>
 		<td rowspan="7"><img src="<%=dog.getImage() %>.jpg"/></td>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<td>Á¾·ù : <%=dog.getKind() %></td>
+		<td>ì¢…ë¥˜ : <%=dog.getKind() %></td>
 	</tr>
 	
 	<tr>
-	 <td>Ãâ»ıÁö: <%=dog.getCountry() %></td>
+	 <td>ì¶œìƒì§€: <%=dog.getCountry() %></td>
 	</tr>
 	<tr>
-	 <td>°¡°İ: <%=dog.getPrice()%></td>
+	 <td>ê°€ê²©: <%=dog.getPrice()%></td>
 	</tr>
 	<tr>
-	 <td>Æò±Õ½ÅÀå: <%=dog.getHeight()%></td>
+	 <td>í‰ê· ì‹ ì¥: <%=dog.getHeight()%></td>
 	</tr>
 	<tr>
-	 <td>Æò±Õ¸ö¹«°Ô: <%=dog.getWeight()%></td>
+	 <td>í‰ê· ëª¸ë¬´ê²Œ: <%=dog.getWeight()%></td>
 	</tr>
 	<tr>
-	 <td>Æ¯Â¡: <%=dog.getContent()%></td>
+	 <td>íŠ¹ì§•: <%=dog.getContent()%></td>
 	</tr>
 	<tr>
 
     <tr><td colspan="2" align="center">
-    <a href="dogList.dog">¸ñ·Ïº¸±â</a></td></tr>
+    <a href="dogList.dog">ëª©ë¡ë³´ê¸°</a></td></tr>
 
 </table>
 </body>

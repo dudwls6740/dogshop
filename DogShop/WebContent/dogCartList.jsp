@@ -1,7 +1,7 @@
 <%@page import="vo.Cart"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,8 +14,21 @@
 		return;
 		}
 	}
+	
+	function checkAll(){
+		var deleteNode = document.myForm.delete1;
+		var allCheckNode = document.myForm.allCheck;
+		
+		if(deleteNode.length == undefined){
+			deleteNode.checked = allCheckNode.checked;
+		} else {
+			for(var i = 0; i < deleteNode.length; i++){
+				deleteNode[i].checked = allCheckNode.checked;
+			}
+		}
+	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -23,16 +36,16 @@
 	ArrayList<Cart> cartList = (ArrayList<Cart>)request.getAttribute("cartList");
     int totalMoney = (Integer)request.getAttribute("totalMoney");
 %>
-<h1 align="center"> <font color ="black"><font size = 15> Àå¹Ù±¸´Ï</font></font></h1>
+<h1 align="center"> <font color ="black"><font size = 15> ì¥ë°”êµ¬ë‹ˆ</font></font></h1>
 <table width="600" align="center">
 <tr>
-<td align="right"><a href="dogList">¼îÇÎ°è¼ÓÇÏ±â</a></td>
+<td align="right"><a href="dogList.dog">ì‡¼í•‘ê³„ì†í•˜ê¸°</a></td>
 </tr>
 </table>
 <%
 if(cartList.size() == 0) {
 %>
-<h1 align="center">»óÇ°ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.</h1>
+<h1 align="center">ìƒí’ˆì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</h1>
 <%
 }
 else {
@@ -40,14 +53,14 @@ else {
 <form action="dogCartRemove.dog" method="post" name="myForm">
 <table align="center" width="600" border="1">
 	<tr align="center" bgcolor="orange">
-		<td>¹øÈ£	</td>
-		<td>»óÇ°ÀÌ¹ÌÁö</td>
-		<td>»óÇ°¸í</td>
-		<td>°¡°İ</td>
-		<td>¼ö·®</td>
+		<td>ë²ˆí˜¸	</td>
+		<td>ìƒí’ˆì´ë¯¸ì§€</td>
+		<td>ìƒí’ˆëª…</td>
+		<td>ê°€ê²©</td>
+		<td>ìˆ˜ëŸ‰</td>
 		<td align="center">
-		<input type="submit" name="delete" value="»èÁ¦" />
-		
+		<input type="submit" name="delete" value="ì‚­ì œ" />
+		<input type="checkbox" name="allCheck" id="allCheck" onclick="checkAll()"/>
 		</td>
 
 	</tr>
@@ -75,7 +88,7 @@ else {
 		<br>
 		</td>
 	<td align="center">
-	<input type="checkbox" name="delete" value="<%=cartList.get(i).getKind()%>"/>
+	<input type="checkbox" name="delete1" value="<%=cartList.get(i).getKind()%>"/>
 	</td>
 	</tr>
 
@@ -86,7 +99,7 @@ else {
 </form>
 <table align="center" width="600" border="0">
 	<tr align="center" bgcolor="yellow">
-		<td align="right" colspan="6"><font color ="gray" size="5">ÃÑ °áÁ¦±İ¾× : </font><font color ="black" size="8"><%=totalMoney%>¿ø</font></td>
+		<td align="right" colspan="6"><font color ="gray" size="5">ì´ ê²°ì œê¸ˆì•¡ : </font><font color ="black" size="8"><%=totalMoney%>ì›</font></td>
 		</tr>
 		</table>
 <%

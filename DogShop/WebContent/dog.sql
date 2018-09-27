@@ -8,9 +8,9 @@ create table dog(
 	height number,
 	weight number,
 	content varchar2(400),
-		readcount number );
+	readcount number 
+);
 
-//중복되지않는 값이 자동으로 들어가게 하기 위해
 
 create sequence dog_se start with 1 nocache;
 

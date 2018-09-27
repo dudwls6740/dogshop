@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.*;
 import biz.DogBiz;
+import svc.DogListService;
 import vo.ActionForward;
 import vo.Dog;
 public class DogListAction implements Action {
@@ -20,11 +21,18 @@ public class DogListAction implements Action {
 			}
 		}
 		request.setAttribute("images", images);
+		
+		/*
 		DogBiz dogBiz = new DogBiz();
-		List<Dog> dogs = dogBiz.getDogs();		
-		request.setAttribute("dogs",dogs);
+		List<Dog> dogs = dogBiz.getDogs();
+		*/		
+		
+		DogListService dogListService = new DogListService();
+		ArrayList<Dog> dogList = dogListService.getDogList();
+		request.setAttribute("dogList",dogList);
 		ActionForward forward = new ActionForward();
 		forward.setUrl("dogList.jsp");
 		return forward;
+		
 	}
 }

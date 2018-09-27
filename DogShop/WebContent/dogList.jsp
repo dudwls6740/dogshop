@@ -4,68 +4,72 @@
 <%@page import="java.util.List"%>
 <%@page import="java.sql.*"%>
 <%@page import="javax.servlet.http.*"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-<%
-List<Dog> dogs = (List<Dog>) request.getAttribute("dogs");
-//request : ³»Àå°´Ã¼ : jsp ÀÚÃ¼¿¡¼­ Á¦°øµÇ´Â ³»Àå°´Ã¼
-int num = 1;
-%>
-<h1 align="center"> °­¾ÆÁö ¸ñ·Ï</h1><P></P>
-<table align="center">
-<% 
-if(dogs != null){
-%>
-	<tr>
-<%
-      for(int i=0;i<dogs.size();i++){
-    	  Dog dog = dogs.get(i);
-%>
-
-	<td>
-			<a href="dogView.dog?id=<%=dog.getId()%>"><img src="<%=dog.getImage()+".jpg"%>" height="100" width="100" border="0"></a><br>
-			»óÇ°¸í : <%=dog.getKind() %><br>°¡°İ : <%=dog.getPrice() %>¿ø
-	</td>
-<%	
-		if(i == 0 || i%4 != 0) {continue;}
-		else {
-%>
-</tr><tr>
-<%
-	}
-}
-%>
-<tr>
-<%
-}
-%>
-</table>
-<br><br>
-<h1 align="center">¿À´Ã º» °³ »óÇ°</h1>
-<table align="center" width="600">
-	<tr>
+	<%
+		List<Dog> dogList = (List<Dog>) request.getAttribute("dogList");
+		//request : ë‚´ì¥ê°ì²´ : jsp ìì²´ì—ì„œ ì œê³µë˜ëŠ” ë‚´ì¥ê°ì²´
+		int num = 1;
+	%>
+	<h1 align="center">ê°•ì•„ì§€ ëª©ë¡</h1>
+	<P></P>
+	<table align="center">
 		<%
-			ArrayList<String> images = 
-			(ArrayList<String>)request.getAttribute("images");
-		if(images !=  null & images.size() > 0){
-			for(int i=0;i<images.size();i++){
+			if (dogList != null) {
 		%>
-		<td align="center">
-			<img src="<%=images.get(i)+".jpg"%>">
-		</td>
-		<%	
-			}
-		}
+		<tr>
+			<%
+			for (int i = 0; i < dogList.size(); i++) {
+					Dog dog = dogList.get(i);
 		%>
-	</tr>
-</table>
+
+			<td><a href="dogView.dog?id=<%=dog.getId()%>"><img
+					src="<%=dog.getImage() + ".jpg"%>" height="100" width="100"
+					border="0"></a><br> ìƒí’ˆëª… : <%=dog.getKind()%><br>ê°€ê²© : <%=dog.getPrice()%>ì›
+			</td>
+			<%-- <%
+				if ((i + 1) % 4 == 0) {
+			%>
+		</tr>
+		<tr>
+			<%
+				}
+			%> --%>
+
+			<%
+				}
+			%>
+		</tr>
+		<%
+				}
+			%>
+
+	</table>
+	<br>
+	<br>
+	<h1 align="center">ì˜¤ëŠ˜ ë³¸ ê°œ ìƒí’ˆ</h1>
+	<table align="center" width="600">
+		<tr>
+			<%
+				ArrayList<String> images = (ArrayList<String>) request.getAttribute("images");
+				if (images != null & images.size() > 0) {
+					for (int i = 0; i < images.size(); i++) {
+			%>
+			<td align="center"><img src="<%=images.get(i) + ".jpg"%>"></td>
+			<%
+				}
+
+				}
+			%>
+		</tr>
+	</table>
 </body>
 </html>
